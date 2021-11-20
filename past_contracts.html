@@ -2,10 +2,9 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
-    <title> Contracts </title>
-    <link rel="stylesheet" href="contracts_style.css">
+    <title> Past Contracts </title>
+    <link rel="stylesheet" href="past_contracts.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
 <body>
@@ -59,19 +58,14 @@
   </div>
   <section class="home-section">
     <nav>
-            <ul>
-               <li>
-                  <a href="#">Contracts
-                  <i class="fas fa-caret-down"></i>
-                  </a>
-                  <ul>
-                     <li><a href="active_contracts.html">Active</a></li>
-                     <li><a href="past_contracts.html">Past</a></li>
-                     <li><a href="view_contracts.html">Create New</a></li>
-                  </ul>
-               </li>
-               
-            </ul>
+      <div class="sidebar-button">
+        <i class='bx bx-menu'></i>
+        <span class="dashboard">Past Contracts</span>
+      </div>
+      <div class="search-box">
+        <input type="text" placeholder="Search...">
+        <i class='bx bx-search' ></i>
+      </div>
       <div class="profile-details">
       
         <span class="admin_name">Username</span>
@@ -86,7 +80,7 @@
 
       <div class="sales-boxes">
         <div class="recent-sales box">
-          <div class="title">Active Contracts</div>
+          <div class="title">Past Contracts</div>
           <div class="sales-details">
             <ul class="details">
               <li class="topic"></li>
@@ -105,10 +99,44 @@
           </ul>
       </div>
     </div>
+
+    <div class="list">
+        <h2>Past Contracts</h2>
+        <ul><li>
+            
+                <p>123456789</p>
+                <span></span>
+            </label>
+        </li>
+        <li>
+            
+                <p>123456789</p>
+                <span></span>
+            </label>
+        </li>
+        <li>
+            
+                <p>123456789</p>
+                <span></span>
+            </label>
+        </li>
+        <li>
+            
+                <p>123456789</p>
+                <span></span>
+            </label>
+        </li>
+        <li>
+           
+                <p>123456789</p>
+                <span></span>
+            </label>
+        </li>
+    </ul>
+
+    </div>
   
   </section>
-
-
 
   <script>
    let sidebar = document.querySelector(".sidebar");
