@@ -69,6 +69,8 @@
             window.userWalletAddress = accounts[0];
             userWallet.innerText = window.userWalletAddress;
             loginButton.innerText = "Sign out of MetaMask";
+            localStorage.setItem('account', accounts[0]);
+            window.location.href="Dashboard.html";
 
             loginButton.removeEventListener("click", loginWithMetaMask);
             setTimeout(() => {

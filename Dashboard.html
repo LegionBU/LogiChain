@@ -8,6 +8,7 @@
       href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
       rel="stylesheet"
     />
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
   <body>
@@ -67,7 +68,7 @@
           <i class="bx bx-search"></i>
         </div>
         <div class="profile-details">
-          <span class="admin_name">Username</span>
+          <span class="admin_name" id="username">Username</span>
         </div>
       </nav>
 
@@ -88,7 +89,7 @@
           <div class="box" style="width: 30rem">
             <div class="right-side">
               <div class="box-topic">Wallet</div>
-              <div class="number">2 BTC</div>
+              <div class="number" id="balance">2 BTC</div>
             </div>
           </div>
         </div>
@@ -119,6 +120,29 @@
     </section>
 
     <script>
+      window.addEventListener('load', async (event) => {
+        let balance = document.getElementById('balance');
+        console.log('page is fully loaded');
+        if (typeof window.ethereum !== 'undefined') {
+          // Instance web3 with the provided information
+          web3 = new Web3(window.ethereum);
+        
+        try {
+          // Request account access
+          await window.ethereum.enable();
+          var accounts = await web3.eth.getAccounts();
+          web3.eth.getBalance(accounts[0]).then(console.log);
+          balance.innerText = web3.utils.fromWei(await web3.eth.getBalance(accounts[0]), 'ether');
+          return true
+        } catch(e) {
+          // User denied access
+          return false
+        }}
+      });
+      let username_field = document.getElementById('username');
+      username_field.innerText=localStorage.getItem('account');
+
+    
       let sidebar = document.querySelector(".sidebar");
       let sidebarBtn = document.querySelector(".sidebarBtn");
       sidebarBtn.onclick = function () {
