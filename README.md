@@ -1,1 +1,1 @@
-# logichain-dashboard
+# LogiChain
