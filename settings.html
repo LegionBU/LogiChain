@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title> Settings </title>
+    <link rel="stylesheet" href="settings_style.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+  <div class="sidebar">
+    <div class="logo-details">
+     <img src="images/Logichain_logo.svg" alt="Logichain" alt="Logichain">
+      
+    </div>
+      <ul class="nav-links">
+        <li>
+          <a href="Dashboard.html" class="active">
+            <i class='bx bx-grid-alt' ></i>
+            <span class="links_name">Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="contracts.html">
+            <i class='bx bx-box' ></i>
+            <span class="links_name">Contracts</span>
+          </a>
+        </li>
+        <li>
+          <a href="settings.html">
+            <i class='bx bx-cog' ></i>
+            <span class="links_name">Settings</span>
+          </a>
+        </li>
+        <li>
+          <a href="contactus.html">
+            <i class='bx bx-user' ></i>
+            <span class="links_name">Contact Us</span>
+          </a>
+        </li>
+        <li>
+          <a href="feedback.html">
+            <i class='bx bx-message' ></i>
+            <span class="links_name">Feedback</span>
+          </a>
+        </li>
+        <li>
+        </li>
+        <li>
+        </li>
+        <li class="log_out">
+          <a href="#">
+            <i class='bx bx-log-out'></i>
+            <span class="links_name">Log out</span>
+          </a>
+        </li>
+      </ul>
+  </div>
+  <section class="home-section">
+    <nav>
+      <div class="sidebar-button">
+        <i class='bx bx-menu'></i>
+        <span class="dashboard">Settings</span>
+      </div>
+      <div class="search-box">
+        <input type="text" placeholder="Search...">
+        <i class='bx bx-search' ></i>
+      </div>
+      <div class="profile-details">
+      
+        <span class="admin_name">Username</span>
+      </div>
+    </nav>
+
+       
+        
+       
+       
+      </div>
+
+      <div class="sales-boxes">
+        <div class="recent-sales box">
+          <div class="title">Active Contracts</div>
+          <div class="sales-details">
+            <ul class="details">
+              <li class="topic"></li>
+            </ul>
+            <ul class="details">
+            <li class="topic"></li>
+            
+          </ul>
+          <ul class="details">
+            <li class="topic"></li>
+            
+          </ul>
+          <ul class="details">
+            <li class="topic"></li>
+            
+          </ul>
+      </div>
+    </div>
+  
+  </section>
+
+  <section class="account-details">
+    <div class="container">
+        <div class="title">Account</div>
+        <div class="content">
+          <form action="#">
+            <div class="user-details">
+              <div class="input-box">
+                <span class="details">Full Name</span>
+                <input type="text" placeholder="Enter your name" required>
+              </div>
+              <div class="input-box">
+                <span class="details">Phone Number</span>
+                <input type="text" placeholder="Enter your Phone Number" required>
+              </div>
+              <div class="input-box">
+                <span class="details">Email</span>
+                <input type="text" placeholder="Enter your email" required>
+              </div>
+              <div class="input-box">
+                <span class="details">Wallet Address</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="gender-details">
+              <input type="radio" name="gender" id="dot-1">
+              <input type="radio" name="gender" id="dot-2">
+              <input type="radio" name="gender" id="dot-3">
+              <span class="gender-title">Gender</span>
+              <div class="category">
+                <label for="dot-1">
+                <span class="dot one"></span>
+                <span class="gender">Male</span>
+              </label>
+              <label for="dot-2">
+                <span class="dot two"></span>
+                <span class="gender">Female</span>
+              </label>
+              <label for="dot-3">
+                <span class="dot three"></span>
+                <span class="gender">Prefer not to say</span>
+                </label>
+              </div>
+            </div>
+            <div class="button">
+              <input type="submit" value="Save">
+            </div>
+          </form>
+        </div>
+      </div>
+  </section>
+
+  <script>
+   let sidebar = document.querySelector(".sidebar");
+let sidebarBtn = document.querySelector(".sidebarBtn");
+sidebarBtn.onclick = function() {
+  sidebar.classList.toggle("active");
+  if(sidebar.classList.contains("active")){
+  sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
+}else
+  sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+}
+ </script>
+</body>
+</html>
