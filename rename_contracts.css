@@ -383,13 +383,40 @@ nav .profile-details i {
 .sales-boxes .box .right-side {
   display: flex;
   align-items: center;
-  justify-content: center;
   width: 50%;
   background: #fff;
   padding: 15px 14px;
   border-radius: 12px;
   background-color: lightcyan;
   margin-top: 10px;
+}
+
+.person-title {
+  position: relative;
+  top: -1.1em;
+  left: 1em;
+  font-size: large;
+}
+
+.item-status {
+  position: relative;
+  top: 1.3em;
+  left: -10.6em;
+  font-size: large;
+}
+
+.item-status2 {
+  position: relative;
+  top: 1.3em;
+  left: -11em;
+  font-size: large;
+}
+
+.update-text {
+  position: relative;
+  top: -1.1em;
+  font-weight: bold;
+  font-size: larger;
 }
 
 .box .bottom-input {
@@ -407,6 +434,7 @@ nav .profile-details i {
 }
 
 .top-sales .lower_inputs {
+  position: relative;
   height: 100%;
   width: 100%;
   outline: none;

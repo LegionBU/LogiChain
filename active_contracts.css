@@ -436,6 +436,15 @@ nav .profile-details i {
   border-bottom: 2px solid #fff;
 }
 
+.contracts_link {
+  text-decoration: none;
+  color: black;
+}
+
+.contracts_link:hover {
+  color: blueviolet;
+}
+
 /* Responsive Media Query */
 @media (max-width: 1240px) {
   .sidebar {
