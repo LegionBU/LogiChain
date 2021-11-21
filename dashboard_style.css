@@ -6,6 +6,11 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+
+body {
+  height: 800px;
+}
+
 .sidebar {
   position: fixed;
   height: 100%;
@@ -73,7 +78,7 @@
 .home-section {
   position: relative;
   background: #f5f5f5;
-  min-height: 100vh;
+  height: 800px;
   width: calc(100% - 240px);
   left: 240px;
   transition: all 0.5s ease;
@@ -183,25 +188,42 @@ nav .profile-details i {
   margin-bottom: 26px;
 }
 .overview-boxes .box {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: calc(100% / 4 - 15px);
+  width: 30%;
   background: #fff;
   padding: 15px 14px;
   border-radius: 12px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  height: 500px;
 }
 .overview-boxes .box-topic {
-  font-size: 20px;
+  position: relative;
+  font-size: xx-large;
   font-weight: 500;
+  top: -3em;
+  left: 2.8em;
 }
 .home-content .box .number {
+  position: relative;
   display: inline-block;
-  font-size: 35px;
+  font-size: xx-large;
   margin-top: -6px;
   font-weight: 500;
+  bottom: -2.5em;
+  left: -4em;
 }
+
+.bx-wallet {
+  position: relative;
+  font-size: 220px;
+  color: blue;
+  left: 0.2em;
+  bottom: 0.2em;
+}
+
 .home-content .box .indicator {
   display: flex;
   align-items: center;
@@ -259,12 +281,16 @@ nav .profile-details i {
 
 /* left box */
 .home-content .sales-boxes .recent-sales {
-  width: 100%;
+  position: relative;
+  width: 30%;
   background: #fff;
   padding: 20px 30px;
   margin: 0 20px;
   border-radius: 12px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  height: 500px;
+  left: 50em;
+  bottom: 32.6em;
 }
 .home-content .sales-boxes .sales-details {
   display: flex;
