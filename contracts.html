@@ -76,7 +76,7 @@
             </ul>
       <div class="profile-details">
       
-        <span class="admin_name">Username</span>
+        <span class="admin_name" id="username">Username</span>
       </div>
     </nav>
 
@@ -152,6 +152,9 @@
         }
       }
     }
+
+    let username_field = document.getElementById("username");
+    username_field.innerText = localStorage.getItem("name");
 
    let sidebar = document.querySelector(".sidebar");
 let sidebarBtn = document.querySelector(".sidebarBtn");

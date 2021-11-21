@@ -58,35 +58,39 @@
           }
 
           async function loginWithMetaMask() {
-            const accounts = await window.ethereum
-              .request({ method: "eth_requestAccounts" })
-              .catch((e) => {
-                console.error(e.message);
-                return;
-              });
-            if (!accounts) {
-              return;
+            web3 = new Web3(window.ethereum);
+
+          
+            try{
+
+              await window.ethereum.enable();
+              var accounts = await web3.eth.getAccounts();
+              window.userWalletAddress = accounts[0];
+
+               var userData;
+               
+               await fetch('./build/contracts/userData.json')
+               .then(response => response.json())
+               .then(data => {
+                  userData = data;
+                });
+               
+               console.log(userData);
+               var web3js = new Web3("https://ropsten.infura.io/v3/d1ed4d59de6b4faa878a943d8553d956");
+               let contract = new web3js.eth.Contract(userData.abi, "0xCF5712a30efF60A6b7d8424363360C8D90764c8D");
+
+               let val = await contract.methods.findUser("0x6a3712645560df8B8BB13E346666EE1751f686eB").call();
+               console.log(val);
+
+              userWallet.innerText = window.userWalletAddress;
+              loginButton.innerText = "Sign out of MetaMask";
+              localStorage.setItem('account', accounts[0]);
+              localStorage.setItem('name', val[1]);
+              window.location.href="Dashboard.html";
+            }catch(err){
+              console.log(err);
             }
 
-            // const dev_data = {
-            //   priv_key = "0x4b0069d43378189e247377039933f7deeb916100d207b20231d9b8101f730a77",
-            //   account_address = "0x33d3FA0db669C8ea67BaA4b87563298DE22bCc4a",
-            //   ropsten_url = "https://ropsten.infura.io/v3/d1ed4d59de6b4faa878a943d8553d956",
-            //   contract_address = "0xCF5712a30efF60A6b7d8424363360C8D90764c8D"
-            // }
-            // console.log(dev_data);
-            // const web3 = new Web3(dev_data.ropsten_url);
-
-            // let contract = await new web3.eth.Contract(
-            //   userData.abi,
-            //   dev_data.contract_address
-            // );
-
-            window.userWalletAddress = accounts[0];
-            userWallet.innerText = window.userWalletAddress;
-            loginButton.innerText = "Sign out of MetaMask";
-            localStorage.setItem('account', accounts[0]);
-            window.location.href="Dashboard.html";
 
             loginButton.removeEventListener("click", loginWithMetaMask);
             setTimeout(() => {
