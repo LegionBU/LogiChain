@@ -204,7 +204,7 @@ nav .profile-details i {
   font-size: xx-large;
   font-weight: 500;
   top: -3em;
-  left: 2.8em;
+  left: 2.8 em;
 }
 .home-content .box .number {
   position: relative;
@@ -306,6 +306,11 @@ nav .profile-details i {
   font-size: 20px;
   font-weight: 500;
 }
+
+.sales-boxes .sales-details li.topic a:hover {
+  color: green !important;
+}
+
 .sales-boxes .sales-details li {
   list-style: none;
   margin: 8px 0;
