@@ -5,6 +5,8 @@
     <title> Contracts </title>
     <link rel="stylesheet" href="contracts_style.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script src="./build/contracts/baseContract.json"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
@@ -67,7 +69,7 @@
                   <ul>
                      <li><a href="active_contracts.html">Active</a></li>
                      <li><a href="past_contracts.html">Past</a></li>
-                     <li><a href="view_contracts.html">Create New</a></li>
+                     <li><a onclick="createContract()">Create New</a></li>
                   </ul>
                </li>
                
@@ -111,6 +113,46 @@
 
 
   <script>
+
+    async function createContract(){
+
+      if (typeof window.ethereum !== 'undefined') {
+          web3 = new Web3(window.ethereum);      
+        try {
+          await window.ethereum.enable();
+          var accounts = await web3.eth.getAccounts();
+          web3.eth.getBalance(accounts[0]).then(console.log);
+          console.log(web3.utils.fromWei(await web3.eth.getBalance(accounts[0]), 'ether'));
+
+          var baseContract;
+          await fetch('./build/contracts/baseContract.json')
+            .then(response => response.json())
+            .then(data => {
+                baseContract = data;
+            })
+          console.log(baseContract);
+
+          var contract = new web3.eth.Contract(baseContract.abi);
+
+          contract = await contract.deploy({data: baseContract.bytecode})
+            .send({
+              from: accounts[0]
+            }).on("receipt", function(receipt) {
+              $("#txStatus").text("Successfully created " + name + "!");
+              alert('Contract created successfully at ' + receipt.address);
+            })
+            .on("error", function(error) {
+                alert(error);
+              $("#txStatus").text(error);
+            });
+          return true
+        } catch(e) {
+          console.log(e);
+          return false
+        }
+      }
+    }
+
    let sidebar = document.querySelector(".sidebar");
 let sidebarBtn = document.querySelector(".sidebarBtn");
 sidebarBtn.onclick = function() {

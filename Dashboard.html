@@ -74,17 +74,6 @@
 
       <div class="home-content">
         <div class="overview-boxes">
-          <div class="box">
-            <div class="right-side">
-              <div class="box-topic">Total Order</div>
-              <div class="number">40,876</div>
-              <div class="indicator">
-                <i class="bx bx-up-arrow-alt"></i>
-                <span class="text">Up from yesterday</span>
-              </div>
-            </div>
-            <i class="bx bx-cart-alt cart"></i>
-          </div>
 
           <div class="box" style="width: 30rem">
             <div class="right-side">
@@ -133,8 +122,10 @@
           var accounts = await web3.eth.getAccounts();
           web3.eth.getBalance(accounts[0]).then(console.log);
           balance.innerText = web3.utils.fromWei(await web3.eth.getBalance(accounts[0]), 'ether');
+          //userContract(accounts[0]);
           return true
         } catch(e) {
+          console.log(e);
           // User denied access
           return false
         }}
