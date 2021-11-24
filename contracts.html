@@ -157,11 +157,7 @@
                 userData = data;
               });
               
-            console.log(userData);
-            var web3js = new Web3("https://ropsten.infura.io/v3/d1ed4d59de6b4faa878a943d8553d956");
-            let contract = new web3js.eth.Contract(userData.abi, "0xCF5712a30efF60A6b7d8424363360C8D90764c8D");
-
-            
+            console.log(userData);    
 
           return true
         } catch(e) {

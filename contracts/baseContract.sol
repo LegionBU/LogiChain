@@ -36,6 +36,8 @@ contract baseContract {
         user.account = _address;
 
         addressUsers.push(_address);
+        userData usd = userData(0xCF5712a30efF60A6b7d8424363360C8D90764c8D);
+        usd.addContractAddress(_address, address(this));
     }
 
     function userExists(address payable _address) public view returns (bool){
