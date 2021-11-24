@@ -134,12 +134,17 @@
 
           var contract = new web3.eth.Contract(baseContract.abi);
 
-          contract = await contract.deploy({data: baseContract.bytecode})
+          var address;
+          contract = await contract.deploy({
+              data: baseContract.bytecode,
+              arguments: [localStorage.getItem('name'), localStorage.getItem('mobile_no'), accounts[0]]
+            })
             .send({
               from: accounts[0]
             }).on("receipt", function(receipt) {
               $("#txStatus").text("Successfully created " + name + "!");
               alert('Contract created successfully at ' + receipt.address);
+              address = receipt.address;
             })
             .on("error", function(error) {
                 alert(error);
@@ -154,7 +159,7 @@
     }
 
     let username_field = document.getElementById("username");
-    username_field.innerText = "Suyash Matanhelia";
+    username_field.innerText = localStorage.getItem('name');
 
    let sidebar = document.querySelector(".sidebar");
 let sidebarBtn = document.querySelector(".sidebarBtn");

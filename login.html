@@ -79,13 +79,14 @@
                var web3js = new Web3("https://ropsten.infura.io/v3/d1ed4d59de6b4faa878a943d8553d956");
                let contract = new web3js.eth.Contract(userData.abi, "0xCF5712a30efF60A6b7d8424363360C8D90764c8D");
 
-               let val = await contract.methods.findUser("0x6a3712645560df8B8BB13E346666EE1751f686eB").call();
+               let val = await contract.methods.findUser(accounts[0]).call();
                console.log(val);
-
+              
               userWallet.innerText = window.userWalletAddress;
               loginButton.innerText = "Sign out of MetaMask";
               localStorage.setItem('account', accounts[0]);
               localStorage.setItem('name', val[1]);
+              localStorage.setItem('mobile_no', val[2]);
               window.location.href="Dashboard.html";
             }catch(err){
               console.log(err);
