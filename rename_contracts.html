@@ -1,10 +1,11 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
     <title> Contracts Update </title>
     <link rel="stylesheet" href="rename_contracts.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
 <body>
@@ -99,7 +100,7 @@
       </div>
       <div class="box">
         <div class="bottom-input">
-            <input type="text" class="lower_inputs" placeholder="Enter Update">
+            <input type="text" id="updateTxt" class="lower_inputs" placeholder="Enter Update">
           <div class="indicator">
           </div>
         </div>
@@ -130,9 +131,9 @@
               </a></div>
           </div>
           <div class="update box">
-            <div class="title"><a href="Dashboard.html" class=>
+            <div class="title"><a  class=>
                 <i class='bx bx-grid-alt' ></i>
-                <span class="add_user_link">Update</span>
+                <button id=updateBtn class="add_user_link">Update</button>
               </a></div></div>
         </div>
       </div>
@@ -140,13 +141,34 @@
   </section>
 
   <script>
-
+    
+    
     window.addEventListener("load", async function(){
       try {
-  const queryString = window.location.search;
-const urlParams = new URLSearchParams(queryString);
-const address = urlParams.get('address');
-console.log(address);
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const address = urlParams.get('address');
+        console.log(address);
+        web3 = new Web3(window.ethereum);
+        await window.ethereum.enable();
+        var accounts = await web3.eth.getAccounts();
+        var baseContract;
+          await fetch('./build/contracts/baseContract.json')
+            .then(response => response.json())
+            .then(data => {
+                baseContract = data;
+            });
+          let contract = new web3.eth.Contract(baseContract.abi,address)
+         
+
+          console.log(baseContract);
+          var abc=document.getElementById("updateTxt");
+ 
+updateBtn.addEventListener("click",function(){
+  contract.methods.setUpdates(abc.value).send({
+    from:accounts[0]
+  })
+});
 
 } catch (error) {
   console.log(error)

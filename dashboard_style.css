@@ -212,10 +212,11 @@ nav .profile-details i {
 .home-content .box .number {
   position: relative;
   display: inline-block;
-  font-size: xx-large;
+  font-size: x-large;
   margin-top: -6px;
   font-weight: 500;
   bottom: 0.25em;
+  right: -2em;
   
 }
 
