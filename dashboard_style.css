@@ -14,9 +14,9 @@ body {
 .sidebar {
   position: fixed;
   height: 100%;
-  width: 240px;
   background: #0a2558;
   transition: all 0.5s ease;
+  width: 240px;
 }
 .sidebar.active {
   width: 60px;
@@ -68,9 +68,9 @@ body {
 }
 .sidebar .nav-links li a .links_name {
   color: #fff;
-  font-size: 15px;
   font-weight: 400;
   white-space: nowrap;
+  font-size: 15px;
 }
 .sidebar .nav-links .log_out {
   position: absolute;
@@ -81,9 +81,9 @@ body {
   position: relative;
   background: #f5f5f5;
   height: 800px;
-  width: calc(100% - 240px);
   left: 240px;
   transition: all 0.5s ease;
+  width: calc(100% - 240px);
 }
 .sidebar.active ~ .home-section {
   width: calc(100% - 60px);
@@ -99,10 +99,10 @@ body {
   position: fixed;
   width: calc(100% - 240px);
   left: 240px;
-  z-index: 100;
-  padding: 0 20px;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   transition: all 0.5s ease;
+  z-index: 100;
+  padding: 0 20px;
 }
 .sidebar.active ~ .home-section nav {
   left: 60px;
@@ -131,9 +131,9 @@ nav .search-box input {
   outline: none;
   background: #f5f6fa;
   border: 2px solid #efeef1;
-  border-radius: 6px;
   font-size: 18px;
   padding: 0 15px;
+  border-radius: 6px;
 }
 nav .search-box .bx-search {
   position: absolute;
@@ -196,10 +196,10 @@ nav .profile-details i {
   justify-content: center;
   width: 30%;
   background: #fff;
-  padding: 15px 14px;
-  border-radius: 12px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   height: 500px;
+  padding: 15px 14px;
+  border-radius: 12px;
 }
 .overview-boxes .box-topic {
   position: relative;
@@ -236,10 +236,10 @@ nav .profile-details i {
   background: #8fdacb;
   line-height: 20px;
   text-align: center;
-  border-radius: 50%;
-  color: #fff;
   font-size: 20px;
   margin-right: 5px;
+  border-radius: 50%;
+  color: #fff;
 }
 .box .indicator i.down {
   background: #e87d88;
@@ -290,9 +290,9 @@ nav .profile-details i {
   margin: 0 20px;
   border-radius: 12px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-  height: 500px;
   left: 50em;
   bottom: 32.6em;
+  height: 500px;
 }
 .home-content .sales-boxes .sales-details {
   display: flex;

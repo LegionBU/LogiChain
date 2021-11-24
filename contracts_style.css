@@ -19,9 +19,9 @@
 .sidebar .logo-details {
   position: relative;
   height: 80px;
-  display: flex;
   align-items: center;
   left: -1em;
+  display: flex;
 }
 .sidebar .logo-details i {
   font-size: 28px;
@@ -47,9 +47,9 @@
   height: 100%;
   width: 100%;
   display: flex;
-  align-items: center;
   text-decoration: none;
   transition: all 0.4s ease;
+  align-items: center;
 }
 
 .sidebar .nav-links li a:hover {
@@ -63,9 +63,9 @@
 }
 .sidebar .nav-links li a .links_name {
   color: #fff;
-  font-size: 15px;
   font-weight: 400;
   white-space: nowrap;
+  font-size: 15px;
 }
 .sidebar .nav-links .log_out {
   position: absolute;
@@ -75,9 +75,9 @@
 .home-section {
   position: relative;
   background: #f5f5f5;
-  width: calc(100% - 240px);
   left: 240px;
   transition: all 0.5s ease;
+  width: calc(100% - 240px);
 }
 .sidebar.active ~ .home-section {
   width: calc(100% - 60px);
@@ -104,9 +104,9 @@
 }
 .home-section nav .sidebar-button {
   display: flex;
-  align-items: center;
   font-size: 24px;
   font-weight: 500;
+  align-items: center;
 }
 nav .sidebar-button i {
   font-size: 35px;
@@ -125,9 +125,9 @@ nav .search-box input {
   outline: none;
   background: #f5f6fa;
   border: 2px solid #efeef1;
-  border-radius: 6px;
   font-size: 18px;
   padding: 0 15px;
+  border-radius: 6px;
 }
 nav .search-box .bx-search {
   position: absolute;
@@ -140,9 +140,9 @@ nav .search-box .bx-search {
   border-radius: 4px;
   line-height: 40px;
   text-align: center;
-  color: #fff;
   font-size: 22px;
   transition: all 0.4 ease;
+  color: #fff;
 }
 .home-section nav .profile-details {
   display: flex;
@@ -189,9 +189,9 @@ nav .profile-details i {
   justify-content: center;
   width: calc(100% / 4 - 15px);
   background: #fff;
-  padding: 15px 14px;
   border-radius: 12px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  padding: 15px 14px;
 }
 .overview-boxes .box-topic {
   font-size: 20px;
@@ -214,9 +214,9 @@ nav .profile-details i {
   line-height: 20px;
   text-align: center;
   border-radius: 50%;
-  color: #fff;
   font-size: 20px;
   margin-right: 5px;
+  color: #fff;
 }
 .box .indicator i.down {
   background: #e87d88;
@@ -263,9 +263,9 @@ nav .profile-details i {
   width: 100%;
   background: #fff;
   padding: 20px 30px;
-  margin: 0 20px;
   border-radius: 12px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  margin: 0 20px;
 }
 .home-content .sales-boxes .sales-details {
   display: flex;
@@ -302,9 +302,9 @@ nav .profile-details i {
   padding: 4px 12px;
   font-size: 15px;
   font-weight: 400;
-  border-radius: 4px;
   text-decoration: none;
   transition: all 0.3s ease;
+  border-radius: 4px;
 }
 .sales-boxes .box .button a:hover {
   background: #0d3073;
@@ -329,9 +329,9 @@ nav .profile-details i {
   height: 40px;
   width: 40px;
   object-fit: cover;
-  border-radius: 12px;
   margin-right: 10px;
   background: #333;
+  border-radius: 12px;
 }
 .sales-boxes .top-sales li a {
   display: flex;
