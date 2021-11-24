@@ -106,28 +106,28 @@
         </div>
   </div>
           <div class="top-sales box">
-            <div class="title"><input type="text" class="lower_inputs" placeholder="Name"></div>
-            <div class="title"><input type="text" class="lower_inputs" placeholder="Phone Number"></div>
+            <div class="title"><input id="nameTxt" type="text" class="lower_inputs" placeholder="Name"></div>
+            <div class="title"><input id="phoneTxt" type="text" class="lower_inputs" placeholder="Phone Number"></div>
             
             
             
           </div>
           <div class="top-sales box">
-            <div class="title"><input type="text" class="lower_inputs" placeholder="ID: 2 for logistics and 3 for seller"></div>
-            <div class="title"><input type="text" class="lower_inputs" placeholder="Wallet Address"></div>
+            <div class="title"><input id="idTxt" type="text" class="lower_inputs" placeholder="ID: 2 for logistics and 3 for seller"></div>
+            <div class="title"><input id="addressTxt" type="text" class="lower_inputs" placeholder="Wallet Address"></div>
 
 
           </div>
           <div class="top-sales box">
-            <div class="title"><input type="text" class="lower_inputs" placeholder="Payment Info."></div>
+            <div class="title"><input id="payTxt" type="text" class="lower_inputs" placeholder="Payment Info."></div>
 
             
             
           </div>
           <div class="add-user box">
-            <div class="title"><a href="Dashboard.html" class=>
+            <div class="title"><a  class=>
                 <i class='bx bx-user' ></i>
-                <span class="add_user_link">Add User</span>
+                <button id="addBtn" class="add_user_link">Add User</button>
               </a></div>
           </div>
           <div class="update box">
@@ -159,16 +159,34 @@
                 baseContract = data;
             });
           let contract = new web3.eth.Contract(baseContract.abi,address)
-         
+          var name=document.getElementById("nameTxt");
+          var phone=document.getElementById("phoneTxt");
+          var id=document.getElementById("idTxt");
+          var addr=document.getElementById("addressTxt");
+          var pay=document.getElementById("payTxt");
+           
+          
 
           console.log(baseContract);
           var abc=document.getElementById("updateTxt");
  
-updateBtn.addEventListener("click",function(){
-  contract.methods.setUpdates(abc.value).send({
-    from:accounts[0]
-  })
-});
+          updateBtn.addEventListener("click",function(){
+            contract.methods.setUpdates(abc.value).send({
+              from:accounts[0]
+            })
+          });
+          addBtn.addEventListener("click",function(){
+            contract.methods.addUser(addr.value, name.value, phone.value, id.value, pay.value).send
+            ({
+              from: accounts[0]
+            })
+          });
+
+
+
+ 
+ 
+
 
 } catch (error) {
   console.log(error)
