@@ -190,10 +190,8 @@
       window.location.href = "Dashboard.html";
     }
 
-    name.innerText = localStorage.getItem('name');
-
-    
-    mobile_no.innerText = localStorage.getItem('mobile_no');
+    name.value = localStorage.getItem('name');
+    mobile_no.value = localStorage.getItem('mobile_no');
     
 
    let sidebar = document.querySelector(".sidebar");

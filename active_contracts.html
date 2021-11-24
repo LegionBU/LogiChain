@@ -69,7 +69,7 @@
       </div>
       <div class="profile-details">
       
-        <span class="admin_name">Suyash Matanhelia</span>
+        <span class="admin_name" id="username"></span>
       </div>
     </nav>
 
@@ -142,10 +142,10 @@ window.addEventListener("load", async function(){
                 userData = data;
               });
 
-            var web3js = new Web3(
-              "https://ropsten.infura.io/v3/d1ed4d59de6b4faa878a943d8553d956"
-            );
-            let contract = new web3js.eth.Contract(
+            web3 = new Web3(window.ethereum); 
+            await window.ethereum.enable();
+            var accounts = await web3.eth.getAccounts();
+            let contract = new web3.eth.Contract(
               userData.abi,
               "0xCF5712a30efF60A6b7d8424363360C8D90764c8D"
             );
@@ -171,7 +171,8 @@ window.addEventListener("load", async function(){
 
 
 
-
+  let username = document.getElementById('username');
+  username.innerText = localStorage.getItem('name');
    let sidebar = document.querySelector(".sidebar");
 let sidebarBtn = document.querySelector(".sidebarBtn");
 sidebarBtn.onclick = function() {
