@@ -173,14 +173,15 @@
           console.log(baseContract);
           var abc=document.getElementById("updateTxt");
  
-          updateBtn.addEventListener("click",function(){
+          updateBtn.addEventListener("click", async function(){
             await contract.methods.setUpdates(abc.value).send({
               from:accounts[0]
             });
             loadUpdates();
           });
-          addBtn.addEventListener("click",function(){
-            contract.methods.addUser(addr.value, name.value, phone.value, id.value, pay.value).send
+
+          addBtn.addEventListener("click", async function(){
+            await contract.methods.addUser(addr.value, name.value, phone.value, id.value, pay.value).send
             ({
               from: accounts[0]
             })
@@ -201,7 +202,24 @@
         var updates = await contract.methods.getUpdates().call();
         console.log(updates);
 
-        
+        updates.array.forEach((update, item) => {
+          var update_msg = update[2];
+          var user = update[3];
+
+          var name = user[1];
+          var id = user[4];
+
+          var id_name;
+          if(id == "1"){
+            id_name = "User";
+          }else if(id == "2"){
+            id_name = "Logistics Provider";
+          }else{
+            id_name = "Seller";
+          }
+
+          
+        });      
     }
 
     let username_field = document.getElementById("username");
