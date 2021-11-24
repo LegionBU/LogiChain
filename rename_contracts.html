@@ -49,12 +49,6 @@
         </li>
         <li>
         </li>
-        <li class="log_out">
-          <a href="#">
-            <i class='bx bx-log-out'></i>
-            <span class="links_name">Log out</span>
-          </a>
-        </li>
       </ul>
   </div>
   <section class="home-section">
@@ -81,10 +75,9 @@
         <div class="sales-boxes">
           <div class="recent-sales box">
             <div class="box">
-                <div class="right-side">
-                  <ul id="right-side">
-
-                  </ul>
+                <div class="right-side" id="p_div">
+                  <ul id="ul"></ul>
+                  
                   <div class="indicator">
                   </div>
                 </div>
@@ -200,9 +193,13 @@
 
     async function loadUpdates(){
         var updates = [];
-         updates = await contract.methods.getUpdates().call();
+        updates = await contract.methods.getUpdates().call();
         console.log(updates);
 
+        document.getElementById('ul').remove();
+
+        let ul = document.createElement('ul');
+        ul.id = 'ul';
         updates.forEach((update, item) => {
           var update_msg = update[2];
           var user = update[3];
@@ -220,16 +217,12 @@
           }
           
           let li = document.createElement("li");
-          li.innerText=name +"\n" + " " + id_name + "\n"  + " " + update_msg ;
-          document.getElementById("right-side").appendChild(li);
-          document
-                .getElementById("right-side")
-                .appendChild(document.createElement("br"));
-              document    
-                .getElementById("right-side")
-                .appendChild(document.createElement("br"));
+          li.innerText=name +"\n" + " " + id_name + "\n"  + " " + update_msg + "\n\n";
+          ul.appendChild(li);
           
-        });      
+        });   
+        
+        document.getElementById("p_div").appendChild(ul);
     }
 
     let username_field = document.getElementById("username");
