@@ -82,18 +82,15 @@
           <div class="recent-sales box">
             <div class="box">
                 <div class="right-side">
-                  <div class="box-topic update-text">Tanmay Singh</div><br>
-                  <br><div class="box-topic person-title">Seller</div>
-                  <div class="box-topic item-status">Item Packaged. Ready to be shipped.</div>
+                  <ul id="right-side">
+
+                  </ul>
                   <div class="indicator">
                   </div>
                 </div>
           </div>
           <div class="box">
-            <div class="right-side">
-              <div class="box-topic update-text">Saumil Sood</div><br>
-              <br><div class="box-topic person-title">Logistics</div>
-              <div class="box-topic item-status2">Item Picked Up. En route to warehouse.</div>
+            <div class="right-side2" id="right-side">
               <div class="indicator">
               </div>
             </div>
@@ -143,6 +140,7 @@
   <script>
     
     let contract;
+   
 
     window.addEventListener("load", async function(){
       try {
@@ -160,6 +158,7 @@
                 baseContract = data;
             });
           contract = new web3.eth.Contract(baseContract.abi,address)
+          loadUpdates();
           var name=document.getElementById("nameTxt");
           var phone=document.getElementById("phoneTxt");
           var id=document.getElementById("idTxt");
@@ -199,10 +198,11 @@
     })
 
     async function loadUpdates(){
-        var updates = await contract.methods.getUpdates().call();
+        var updates = [];
+         updates = await contract.methods.getUpdates().call();
         console.log(updates);
 
-        updates.array.forEach((update, item) => {
+        updates.forEach((update, item) => {
           var update_msg = update[2];
           var user = update[3];
 
@@ -217,7 +217,16 @@
           }else{
             id_name = "Seller";
           }
-
+          
+          let li = document.createElement("li");
+          li.innerText=name +"\n" + " " + id_name + "\n"  + " " + update_msg ;
+          document.getElementById("right-side").appendChild(li);
+          document
+                .getElementById("right-side")
+                .appendChild(document.createElement("br"));
+              document    
+                .getElementById("right-side")
+                .appendChild(document.createElement("br"));
           
         });      
     }
