@@ -5,6 +5,7 @@
     <title> Settings </title>
     <link rel="stylesheet" href="settings_style.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
 <body>
@@ -68,7 +69,7 @@
       </div>
       <div class="profile-details">
       
-        <span class="admin_name">Suyash Matanhelia</span>
+        <span class="admin_name" id="username"></span>
       </div>
     </nav>
 
@@ -110,41 +111,19 @@
             <div class="user-details">
               <div class="input-box">
                 <span class="details">Full Name</span>
-                <input type="text" placeholder="Enter your name" required>
+                <input type="text" placeholder="Enter your name" required id="name">
               </div>
               <div class="input-box">
                 <span class="details">Phone Number</span>
-                <input type="text" placeholder="Enter your Phone Number" required>
+                <input type="text" placeholder="Enter your Phone Number" required id="mobile_no">
               </div>
-              <div class="input-box">
-                <span class="details">Email</span>
-                <input type="text" placeholder="Enter your email" required>
-              </div>
+              
               <div class="input-box">
                 <span class="details">Wallet Address</span>
-                <span></span>
+                <span id="wallet_addr"></span>
               </div>
             </div>
-            <div class="gender-details">
-              <input type="radio" name="gender" id="dot-1">
-              <input type="radio" name="gender" id="dot-2">
-              <input type="radio" name="gender" id="dot-3">
-              <span class="gender-title">Gender</span>
-              <div class="category">
-                <label for="dot-1">
-                <span class="dot one"></span>
-                <span class="gender">Male</span>
-              </label>
-              <label for="dot-2">
-                <span class="dot two"></span>
-                <span class="gender">Female</span>
-              </label>
-              <label for="dot-3">
-                <span class="dot three"></span>
-                <span class="gender">Prefer not to say</span>
-                </label>
-              </div>
-            </div>
+            
             <div class="button">
               <input type="submit" value="Save">
             </div>
@@ -154,6 +133,29 @@
   </section>
 
   <script>
+
+    window.addEventListener("load", async function() {
+      if(typeof window.ethereum !== "undefined"){
+        web3 = new Web3(window.ethereum);
+        try{
+          await window.ethereum.enable();
+          var accounts = await web3.eth.getAccounts();
+
+          var wallet_addr = document.getElementById('wallet_addr');
+          wallet_addr.innerText = accounts[0];
+        }catch(err){
+          console.log(err);
+        }
+      }
+    });
+
+    let name = document.getElementById('name');
+    name.innerText = localStorage.getItem('name');
+
+    let mobile_no = document.getElementById('mobile_no');
+    mobile_no.innerText = localStorage.getItem('mobile_no');
+    
+
    let sidebar = document.querySelector(".sidebar");
 let sidebarBtn = document.querySelector(".sidebarBtn");
 sidebarBtn.onclick = function() {
