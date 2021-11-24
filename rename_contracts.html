@@ -64,7 +64,7 @@
       </div>
       <div class="profile-details">
       
-        <span class="admin_name">Suyash Matanhelia</span>
+        <span class="admin_name" id="username"></span>
       </div>
     </nav>
 
@@ -140,6 +140,21 @@
   </section>
 
   <script>
+
+    window.addEventListener("load", async function(){
+      try {
+  const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const address = urlParams.get('address');
+console.log(address);
+
+} catch (error) {
+  console.log(error)
+}
+    })
+
+    let username_field = document.getElementById("username");
+      username_field.innerText = localStorage.getItem("name");
    let sidebar = document.querySelector(".sidebar");
 let sidebarBtn = document.querySelector(".sidebarBtn");
 sidebarBtn.onclick = function() {
@@ -150,15 +165,7 @@ sidebarBtn.onclick = function() {
   sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
 }
 
-try {
-  const queryString = window.location.search;
-const urlParams = new URLSearchParams(queryString);
-const address = urlParams.get('address');
-console.log(address);
 
-} catch (error) {
-  console.log(error)
-}
 
  </script>
 </body>

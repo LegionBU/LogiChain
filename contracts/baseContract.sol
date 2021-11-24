@@ -45,19 +45,27 @@ contract baseContract {
         return true;
     }
 
-    function addUser(address payable _address, string memory name, string memory mobile_no, uint id, uint256 payment_amt) public {
-        User storage user = users[_address];
+    function addUser(address payable _address, string memory name, string memory mobile_no, uint id, uint256 payment_amt) public{
+        if(!userExists(_address)){
+            User storage user = users[_address];
 
-        user.flag = 1;
-        user.name = name;
-        user.mobile_no = mobile_no;
-        user.id = id;
-        user.payment_amt = payment_amt;
-        user.account = _address;
+            user.flag = 1;
+            user.name = name;
+            user.mobile_no = mobile_no;
+            user.id = id;
+            user.payment_amt = payment_amt;
+            user.account = _address;
 
-        addressUsers.push(_address);
+            addressUsers.push(_address);
+            
 
-        emit userAdded(_address, msg.sender);
+            userData usd = userData(0xCF5712a30efF60A6b7d8424363360C8D90764c8D);
+            usd.createUser(_address, name, mobile_no);
+            usd.addContractAddress(_address, address(this));
+
+            emit userAdded(_address, msg.sender);
+            //usd.createUser(_address, name, mobile_no);
+        }
     }
 
     function setUpdates(string memory _update) public {
@@ -76,6 +84,10 @@ contract baseContract {
     }
   
     function addEther() external payable{}
+
+    function getBalance() public view returns(uint256){
+        return address(this).balance;
+    } 
 
 }
 
