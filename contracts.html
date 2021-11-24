@@ -134,7 +134,7 @@
 
           var contract = new web3.eth.Contract(baseContract.abi);
 
-          var address;
+          var contract_address;
           contract = await contract.deploy({
               data: baseContract.bytecode,
               arguments: [localStorage.getItem('name'), localStorage.getItem('mobile_no'), accounts[0]]
@@ -150,6 +150,19 @@
                 alert(error);
               $("#txStatus").text(error);
             });
+
+            await fetch('./build/contracts/userData.json')
+              .then(response => response.json())
+              .then(data => {
+                userData = data;
+              });
+              
+            console.log(userData);
+            var web3js = new Web3("https://ropsten.infura.io/v3/d1ed4d59de6b4faa878a943d8553d956");
+            let contract = new web3js.eth.Contract(userData.abi, "0xCF5712a30efF60A6b7d8424363360C8D90764c8D");
+
+            
+
           return true
         } catch(e) {
           console.log(e);
