@@ -22,9 +22,11 @@ body {
   width: 60px;
 }
 .sidebar .logo-details {
+  position: relative;
   height: 80px;
   display: flex;
   align-items: center;
+  left: -1em;
 }
 .sidebar .logo-details i {
   font-size: 28px;
