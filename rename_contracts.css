@@ -335,7 +335,7 @@ nav .profile-details i {
   border-radius: 12px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   left: 880px;
-  bottom: 14.5em;
+  bottom: 15.2em;
   margin-top: 20px;
   margin-bottom: 20px;
   margin-right: 20px;
@@ -350,7 +350,7 @@ nav .profile-details i {
   border-radius: 12px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   left: 200px;
-  bottom: 21em;
+  bottom: 21.8em;
   margin-top: 20px;
   margin-bottom: 20px;
   margin-right: 20px;
@@ -463,11 +463,12 @@ nav .profile-details i {
   background-color: lightcyan;
   height: 50px;
   width: 120px;
+  left: 1.5em;
 }
 
 .update-icon {
   position: relative;
-  top: 5px;
+  top: 4px;
 }
 
 /* Responsive Media Query */
