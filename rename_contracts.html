@@ -143,6 +143,7 @@
   <script>
     
     let contract;
+  
 
     window.addEventListener("load", async function(){
       try {
@@ -150,6 +151,7 @@
         const urlParams = new URLSearchParams(queryString);
         const address = urlParams.get('address');
         console.log(address);
+
         web3 = new Web3(window.ethereum);
         await window.ethereum.enable();
         var accounts = await web3.eth.getAccounts();
@@ -159,7 +161,9 @@
             .then(data => {
                 baseContract = data;
             });
-          contract = new web3.eth.Contract(baseContract.abi,address)
+            
+          contract = new web3.eth.Contract(baseContract.abi,address);
+          loadUpdates();
           var name=document.getElementById("nameTxt");
           var phone=document.getElementById("phoneTxt");
           var id=document.getElementById("idTxt");
@@ -199,10 +203,11 @@
     })
 
     async function loadUpdates(){
+        
         var updates = await contract.methods.getUpdates().call();
         console.log(updates);
 
-        updates.array.forEach((update, item) => {
+        updates.forEach((update, item) => {
           var update_msg = update[2];
           var user = update[3];
 
@@ -218,7 +223,7 @@
             id_name = "Seller";
           }
 
-          
+
         });      
     }
 
