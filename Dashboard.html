@@ -137,7 +137,7 @@
             );
 
             var contracts = await contract.methods
-              .getContractAddress("0x6a3712645560df8B8BB13E346666EE1751f686eB")
+              .getContractAddress(accounts[0])
               .call();
             var list = document.getElementById("contract_list");
 
