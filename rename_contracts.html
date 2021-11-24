@@ -142,7 +142,8 @@
 
   <script>
     
-    
+    let contract;
+
     window.addEventListener("load", async function(){
       try {
         const queryString = window.location.search;
@@ -158,12 +159,14 @@
             .then(data => {
                 baseContract = data;
             });
-          let contract = new web3.eth.Contract(baseContract.abi,address)
+          contract = new web3.eth.Contract(baseContract.abi,address)
           var name=document.getElementById("nameTxt");
           var phone=document.getElementById("phoneTxt");
           var id=document.getElementById("idTxt");
           var addr=document.getElementById("addressTxt");
           var pay=document.getElementById("payTxt");
+
+          
            
           
 
@@ -171,9 +174,10 @@
           var abc=document.getElementById("updateTxt");
  
           updateBtn.addEventListener("click",function(){
-            contract.methods.setUpdates(abc.value).send({
+            await contract.methods.setUpdates(abc.value).send({
               from:accounts[0]
-            })
+            });
+            loadUpdates();
           });
           addBtn.addEventListener("click",function(){
             contract.methods.addUser(addr.value, name.value, phone.value, id.value, pay.value).send
@@ -188,10 +192,17 @@
  
 
 
-} catch (error) {
-  console.log(error)
-}
+      } catch (error) {
+        console.log(error)
+      }
     })
+
+    async function loadUpdates(){
+        var updates = await contract.methods.getUpdates().call();
+        console.log(updates);
+
+        
+    }
 
     let username_field = document.getElementById("username");
       username_field.innerText = localStorage.getItem("name");
