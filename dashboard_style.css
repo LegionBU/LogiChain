@@ -307,6 +307,17 @@ nav .profile-details i {
   font-weight: 500;
 }
 
+#list_items {
+  position: relative;
+  font-size: 20px;
+  font-weight: 500;
+  right: 70px;
+}
+
+.sales-boxes .sales-details #list_items a:hover {
+  color: green !important;
+}
+
 .sales-boxes .sales-details li.topic a:hover {
   color: green !important;
 }

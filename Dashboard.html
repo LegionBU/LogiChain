@@ -87,16 +87,14 @@
           <div class="recent-sales box">
             <div class="title">Active Contracts</div>
             <div class="sales-details">
-              <ul class="details" id="contract_list">
-                
-              </ul>
-              <ul class="details">
+              <ul class="details" id="contract_list"></ul>
+              <ul class="details" id="list_items">
                 <li class="topic"></li>
               </ul>
-              <ul class="details">
+              <ul class="details" id="list_items">
                 <li class="topic"></li>
               </ul>
-              <ul class="details">
+              <ul class="details" id="list_items">
                 <li class="topic"></li>
               </ul>
             </div>
@@ -110,48 +108,62 @@
         let balance = document.getElementById("balance");
         console.log("page is fully loaded");
         if (typeof window.ethereum !== "undefined") {
-          
           web3 = new Web3(window.ethereum);
 
           try {
-            
             await window.ethereum.enable();
             var accounts = await web3.eth.getAccounts();
             web3.eth.getBalance(accounts[0]).then(console.log);
             balance.innerText =
-            web3.utils.fromWei(
-              await web3.eth.getBalance(accounts[0]),
-              "ether"
-            ) + " ETH";
-            
-            await fetch('./build/contracts/userData.json')
-              .then(response => response.json())
-              .then(data => {
+              web3.utils.fromWei(
+                await web3.eth.getBalance(
+                  "0x6a3712645560df8B8BB13E346666EE1751f686eB"
+                ),
+                "ether"
+              ) + " ETH";
+
+            await fetch("./build/contracts/userData.json")
+              .then((response) => response.json())
+              .then((data) => {
                 userData = data;
-            });
+              });
 
-            var web3js = new Web3("https://ropsten.infura.io/v3/d1ed4d59de6b4faa878a943d8553d956");
-            let contract = new web3js.eth.Contract(userData.abi, "0xCF5712a30efF60A6b7d8424363360C8D90764c8D");
+            var web3js = new Web3(
+              "https://ropsten.infura.io/v3/d1ed4d59de6b4faa878a943d8553d956"
+            );
+            let contract = new web3js.eth.Contract(
+              userData.abi,
+              "0xCF5712a30efF60A6b7d8424363360C8D90764c8D"
+            );
 
-            var contracts = await contract.methods.getContractAddress(accounts[0]).call();
-            var list = document.getElementById('contract_list');
+            var contracts = await contract.methods
+              .getContractAddress("0x6a3712645560df8B8BB13E346666EE1751f686eB")
+              .call();
+            var list = document.getElementById("contract_list");
 
             contracts.forEach((item, num) => {
-              let li = document.createElement("li");
-              li.innerText = "Contract "+(num+1);
-              list.appendChild(li);
+              let a = document.createElement("a");
+              a.href = "rename_contracts.html?address=" + item;
+              a.innerText = "Contract " + (num + 1);
+              document.getElementById("list_items").appendChild(a);
+              document
+                .getElementById("list_items")
+                .appendChild(document.createElement("br"));
+              document
+                .getElementById("list_items")
+                .appendChild(document.createElement("br"));
             });
 
             return true;
           } catch (e) {
             console.log(e);
-            
+
             return false;
           }
         }
       });
       let username_field = document.getElementById("username");
-      username_field.innerText = localStorage.getItem('name');
+      username_field.innerText = localStorage.getItem("name");
       console.log(localStorage.getItem("account"));
       let sidebar = document.querySelector(".sidebar");
       let sidebarBtn = document.querySelector(".sidebarBtn");

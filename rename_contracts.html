@@ -142,6 +142,17 @@ sidebarBtn.onclick = function() {
 }else
   sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
 }
+
+try {
+  const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const address = urlParams.get('address');
+console.log(address);
+
+} catch (error) {
+  console.log(error)
+}
+
  </script>
 </body>
 </html>
