@@ -125,7 +125,7 @@
             </div>
             
             <div class="button">
-              <input type="submit" value="Save">
+              <button type="button" class="save_btn" onclick="save()">Save</button>
             </div>
           </form>
         </div>
@@ -133,26 +133,66 @@
   </section>
 
   <script>
+    let name = document.getElementById('name');
+    let mobile_no = document.getElementById('mobile_no');
+
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const status = urlParams.get('status');
+    console.log(status);
+
+    if(status === "create"){
+      alert("Enter name and mobile number to continue");
+    }
+
+    var web3;
+    var accounts;
 
     window.addEventListener("load", async function() {
       if(typeof window.ethereum !== "undefined"){
         web3 = new Web3(window.ethereum);
         try{
           await window.ethereum.enable();
-          var accounts = await web3.eth.getAccounts();
+          accounts = await web3.eth.getAccounts();
+          console.log(accounts);
 
           var wallet_addr = document.getElementById('wallet_addr');
           wallet_addr.innerText = accounts[0];
+
         }catch(err){
           console.log(err);
         }
       }
     });
 
-    let name = document.getElementById('name');
+    async function save(){
+      await fetch('./build/contracts/userData.json')
+      .then(response => response.json())
+      .then(data => {
+        userData = data;
+      });
+      
+      console.log(userData);
+      let contract = new web3.eth.Contract(userData.abi, "0xCF5712a30efF60A6b7d8424363360C8D90764c8D");
+
+      await contract.methods.createUser(accounts[0], name.value, mobile_no.value).send({
+        from: accounts[0]
+      }).on("receipt", function(receipt) {
+        alert('Account successfully created');
+        address = receipt.address;
+      })
+      .on("error", function(error) {
+          alert(error);
+      });
+
+      localStorage.setItem('name', name.value);
+      localStorage.setItem('mobile_no', mobile_no.value);
+      window.location.href = "Dashboard.html";
+    }
+
     name.innerText = localStorage.getItem('name');
 
-    let mobile_no = document.getElementById('mobile_no');
+    
     mobile_no.innerText = localStorage.getItem('mobile_no');
     
 

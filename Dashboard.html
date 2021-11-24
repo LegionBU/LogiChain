@@ -117,7 +117,7 @@
             balance.innerText =
               web3.utils.fromWei(
                 await web3.eth.getBalance(
-                  "0x6a3712645560df8B8BB13E346666EE1751f686eB"
+                  account[0]
                 ),
                 "ether"
               ) + " ETH";
