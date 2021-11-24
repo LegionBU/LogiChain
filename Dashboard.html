@@ -135,7 +135,7 @@
         }
       });
       let username_field = document.getElementById("username");
-      username_field.innerText = "Suyash Matanhelia";
+      username_field.innerText = localStorage.getItem('name');
       console.log(localStorage.getItem("account"));
       let sidebar = document.querySelector(".sidebar");
       let sidebarBtn = document.querySelector(".sidebarBtn");
