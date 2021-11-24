@@ -369,13 +369,13 @@ nav .profile-details i {
   padding: 20px;
   border: 2px solid green;
   border-radius: 10px;
+  top: 3em;
 }
 
 .list ul li {
   position: relative;
   list-style: none;
   padding: 15px 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   width: 46em;
 }
 
@@ -394,10 +394,6 @@ nav .profile-details i {
 .list ul li label input {
   visibility: hidden;
   appearance: none;
-}
-
-.list ul li label p {
-  position: absolute;
 }
 
 .list ul li label span {
@@ -419,11 +415,6 @@ nav .profile-details i {
   border-left: 2px solid #ccc;
   border-bottom: 2px solid #ccc;
   transform: rotate(-40deg);
-}
-
-.list ul li label input:checked ~ p {
-  text-decoration: line-through;
-  color: #ccc;
 }
 
 .list ul li label input:checked ~ span {

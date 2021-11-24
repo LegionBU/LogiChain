@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="active_contracts.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
    </head>
 <body>
   <div class="sidebar">
@@ -100,17 +101,11 @@
       </div>
     </div>
 
-    <div class="list">
+    <div class="list" >
         <h2>Active Contracts</h2>
-        <ul><li>
-            
-                <p><a href="rename_contracts.html" class="contracts_link">Contract 1</a></p>
-                <span></span>
-            </label>
+        <ul ><li id="active_contracts">
         </li>
         <li>
-            
-                <p><a class="contracts_link" href="rename_contracts.html">Contract 2</a></p>
                 <span></span>
             </label>
         </li>
@@ -139,6 +134,44 @@
   </section>
 
   <script>
+
+window.addEventListener("load", async function(){
+  await fetch("./build/contracts/userData.json")
+              .then((response) => response.json())
+              .then((data) => {
+                userData = data;
+              });
+
+            var web3js = new Web3(
+              "https://ropsten.infura.io/v3/d1ed4d59de6b4faa878a943d8553d956"
+            );
+            let contract = new web3js.eth.Contract(
+              userData.abi,
+              "0xCF5712a30efF60A6b7d8424363360C8D90764c8D"
+            );
+
+            var contracts = await contract.methods
+              .getContractAddress(accounts[0])
+              .call();
+
+              contracts.forEach((item, num) => {
+              let a = document.createElement("a");
+              a.href = "rename_contracts.html?address=" + item;
+              a.innerText = "Contract " + (num + 1);
+              document.getElementById("active_contracts").appendChild(a);
+              document
+                .getElementById("active_contracts")
+                .appendChild(document.createElement("br"));
+              document
+                .getElementById("active_contracts")
+                .appendChild(document.createElement("br"));
+            });
+})
+
+
+
+
+
    let sidebar = document.querySelector(".sidebar");
 let sidebarBtn = document.querySelector(".sidebarBtn");
 sidebarBtn.onclick = function() {
