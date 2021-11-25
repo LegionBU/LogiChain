@@ -255,7 +255,7 @@ nav .profile-details i {
 .home-content .sales-boxes {
   display: flex;
   justify-content: space-between;
-  height: 500px;
+  height: 100%;
   /* padding: 0 20px; */
 }
 
