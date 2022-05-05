@@ -29,10 +29,12 @@
             <center>
               <span class="credit"
                 >Created By
-                <a href="">Team Legion</a> |
+                <a href="">Suyash</a>
+                and
+                <a href="">Arishmit</a>
               </span>
               <span class="far fa-copyright"></span
-              ><span> 2021 All rights reserved.</span>
+              ><span>| 2022 | All rights reserved.</span>
             </center>
           </div>
         </footer>
@@ -75,8 +77,8 @@
                 });
                
                console.log(userData);
-               var web3js = new Web3("https://ropsten.infura.io/v3/d1ed4d59de6b4faa878a943d8553d956");
-               let contract = new web3js.eth.Contract(userData.abi, "0xCF5712a30efF60A6b7d8424363360C8D90764c8D");
+               var web3js = new Web3("https://speedy-nodes-nyc.moralis.io/2121a9e387697a9756013326/polygon/mumbai");
+               let contract = new web3js.eth.Contract(userData.abi, "0xb958766e6C29bD233B58e37557103fAfCD021330");
 
                let val = await contract.methods.findUser(accounts[0]).call();
                localStorage.setItem('account', accounts[0]);

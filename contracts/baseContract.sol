@@ -36,7 +36,7 @@ contract baseContract {
         user.account = _address;
 
         addressUsers.push(_address);
-        userData usd = userData(0xCF5712a30efF60A6b7d8424363360C8D90764c8D);
+        userData usd = userData(0xb958766e6C29bD233B58e37557103fAfCD021330);
         usd.addContractAddress(_address, address(this));
     }
 
@@ -61,7 +61,7 @@ contract baseContract {
             addressUsers.push(_address);
             
 
-            userData usd = userData(0xCF5712a30efF60A6b7d8424363360C8D90764c8D);
+            userData usd = userData(0xb958766e6C29bD233B58e37557103fAfCD021330);
             usd.createUser(_address, name, mobile_no);
             usd.addContractAddress(_address, address(this));
 
